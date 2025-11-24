@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <!-- PWA Meta Tags -->
+    <link rel="manifest" href="manifest.json" />
+    <link
+      rel="apple-touch-icon"
+      href="static/AppImages/android/android-launchericon-192-192.png"
+    />
+    <meta name="theme-color" content="#2BAEAE" />
+    <meta name="mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta
+      name="apple-mobile-web-app-status-bar-style"
+      content="black-translucent"
+    />
+    <meta name="apple-mobile-web-app-title" content="calorIA" />
+
+    <title>calorIA - Nutrition App</title>
+
+    <style>
+      body,
+      html {
+        margin: 0;
+        height: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background-color: #2baeae;
+        color: white;
+        font-family: sans-serif;
+        text-align: center;
+      }
+      .splash {
+        max-width: 200px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="splash">
+      <img
+        src="static/AppImages/android/android-launchericon-512-512.png"
+        alt="calorIA Logo"
+        style="width: 100%"
+      />
+      <h1>calorIA</h1>
+      <p>Loading your nutrition app...</p>
+    </div>
+
+    <script>
+      // Register service worker
+      if ("serviceWorker" in navigator) {
+        navigator.serviceWorker
+          .register("service-worker.js")
+          .then(() => console.log("✅ Service Worker registered"))
+          .catch((err) => console.warn("❌ Service Worker failed", err));
+      }
+
+      // Redirect to Streamlit app after 2 seconds
+      setTimeout(() => {
+        window.location.href = "https://caloriapp.streamlit.app/";
+      }, 2000);
+    </script>
+  </body>
+</html>
